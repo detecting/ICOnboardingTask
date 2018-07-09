@@ -36,6 +36,7 @@ namespace Keys_Onboarding.Test
                 //Now page is Dashboard, then go to PropertyOwnersPage
                 PropertyOwnerPage propertyOwnerPage=new DashboardPage().GotoPropertyOwnersPage();
                 AddNewPropertyPage addNewPropertyPage = propertyOwnerPage.ClickAddNewPropertyBtn();
+                //Fill details of AddNewProperty Page.
 
             }
         }

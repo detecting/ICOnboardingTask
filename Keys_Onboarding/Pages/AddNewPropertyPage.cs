@@ -98,6 +98,10 @@ namespace Keys_Onboarding.Pages
             Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[8]/div[1]/input[1]")]
         IWebElement CBOwnerOccupied { get; set; }
 
+        [FindsBy(How = How.XPath,
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[9]/div[2]/div[1]/input[1]")]
+        IWebElement FileUploadBtn { get; set; }
+
         //Define Next button
         [FindsBy(
             How = How.XPath,
@@ -120,9 +124,8 @@ namespace Keys_Onboarding.Pages
             DpdPropertyType.Click();
 
             // wait fot the lsit to show up
-            IWebElement listPropertyType = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(5)).Until(
-                ExpectedConditions.ElementExists(
-                    By.XPath("/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[2]/div[2]/div[1]/div[2]")));
+            IWebElement listPropertyType = Driver.WaitForElementExist(
+                By.XPath("/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[2]/div[2]/div[1]/div[2]"), 5);
             var lists = listPropertyType.FindElements(By.TagName("div"));
             foreach (var item in lists)
             {
@@ -232,6 +235,12 @@ namespace Keys_Onboarding.Pages
             Thread.Sleep(1000);
         }
 
+        //File Upload
+        internal void FileUpload(string filePath)
+        {
+            FileUploadBtn.SendKeys(filePath);
+        }
+
         public void FillAllFieldsWithoutTickOwnerOccupied(string propertyName, string propertyType, string
                 searchAddress, string description, string targetRent, string rentType, string landArea,
             string floorArea,
@@ -249,11 +258,28 @@ namespace Keys_Onboarding.Pages
             Bathrooms(bathrooms);
             Carparks(carparks);
             YearBuilt(yearBuilt);
-            OwnerOccupied();
+            FileUpload(filePath);
         }
 
-        public void FillAllFields()
+        public void FillAllFields(string propertyName, string propertyType, string
+                searchAddress, string description, string targetRent, string rentType, string landArea,
+            string floorArea,
+            string bedrooms, string bathrooms, string carparks, string yearBuilt, string filePath)
         {
+            PropertyName(propertyName);
+            PropertyType(propertyType);
+            SearchAddress(searchAddress);
+            Description(description);
+            TargetRent(targetRent);
+            RentType(rentType);
+            LandArea(landArea);
+            FloorArea(floorArea);
+            Bedrooms(bedrooms);
+            Bathrooms(bathrooms);
+            Carparks(carparks);
+            YearBuilt(yearBuilt);
+            OwnerOccupied();
+            FileUpload(filePath);
         }
 
         // Click Next
