@@ -85,7 +85,7 @@ namespace Keys_Onboarding.Global
 
             public static void PopulateInCollection(string fileName, string SheetName)
             {
-                ExcelLib.ClearData();
+                ClearData();
                 DataTable table = ExcelToDataTable(fileName, SheetName);
 
                 //Iterate through the rows and columns of the Table

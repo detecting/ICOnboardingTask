@@ -54,7 +54,6 @@ namespace Keys_Onboarding.Global
             //Click on the Register link
             RegisterLink.Click();
 
-            Driver.wait(2);
             //Read FirstName
             FirstName.SendKeys(ExcelLib.ReadData(2, "FirstName"));
 
@@ -64,7 +63,6 @@ namespace Keys_Onboarding.Global
             //Read Email
             Email.SendKeys(ExcelLib.ReadData(2, "Email"));
 
-            Driver.wait(2);
             //Read Password
             Password.SendKeys(ExcelLib.ReadData(2, "Password"));
 

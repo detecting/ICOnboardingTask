@@ -15,17 +15,28 @@ namespace Keys_Onboarding.Test
         [Category("Sprint1")]
         class Tenant : Base
         {
-            [Test]
-            public void PO_AddNewProperty()
+            [Test, Description("Nunit-Search for a property!")]
+            public void SearchAProperty()
             {
                 // Creates a toggle for the given test, adds all log events under it    
-                test = extent.StartTest("Search for a Property"+GetDateAndTime.GetTimeNow());
+                test = extent.StartTest("Search for a Property" + GetDateAndTime.GetTimeNow());
                 // After Login and the goto Dashboard Page
                 DashboardPage dashboardPage = new DashboardPage();
                 // Create an class and object to call the method
-                PropertyOwnerPage propertyOwnerPage = dashboardPage.PropertyOwners();
+                PropertyOwnerPage propertyOwnerPage = dashboardPage.GotoPropertyOwnersPage();
                 //Search the property
                 propertyOwnerPage.SearchAProperty();
+            }
+
+            [Test, Description("Nunit-Create new property!")]
+            public void CreateNewProperty()
+            {
+                // Creates a toggle for the given test, adds all log events under it    
+                test = extent.StartTest("Create new property" + GetDateAndTime.GetTimeNow());
+                //Now page is Dashboard, then go to PropertyOwnersPage
+                PropertyOwnerPage propertyOwnerPage=new DashboardPage().GotoPropertyOwnersPage();
+                AddNewPropertyPage addNewPropertyPage = propertyOwnerPage.ClickAddNewPropertyBtn();
+
             }
         }
     }

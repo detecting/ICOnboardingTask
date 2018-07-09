@@ -20,9 +20,21 @@ namespace Keys_Onboarding
 
         #region WebElements Definition
 
+        // Define  Add New Property button
+        [FindsBy(
+            How = How.XPath,
+            Using = "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/a[2]")]
+        IWebElement AddNewPropertyBtn { get; set; }
+
+        //Define List A Rental button
+        [FindsBy(
+            How = How.XPath,
+            Using = "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/a[1]")]
+        IWebElement BtnListRental { get; set; }
+
         //Define Owners tab
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]")]
-        private IWebElement Ownertab { set; get; }
+        IWebElement Ownertab { set; get; }
 
         // Find Owner List
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]")]
@@ -30,44 +42,55 @@ namespace Keys_Onboarding
 
         //Define Properties page
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]")]
-        private IWebElement Properties { set; get; }
+        IWebElement Properties { set; get; }
 
         //Define search bar        
         [FindsBy(How = How.XPath,
             Using = "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/input[1]")]
-        private IWebElement SearchBar { set; get; }
+        IWebElement SearchBar { set; get; }
 
         //Define search button
 
         [FindsBy(How = How.XPath,
             Using = "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/i[1]")]
-        private IWebElement SearchButton { set; get; }
+        IWebElement SearchButton { set; get; }
 
         #endregion
 
-        public void Common_methods()
+        internal AddNewPropertyPage ClickAddNewPropertyBtn()
         {
-
-            //Click on the Owners tab
-            Ownertab.Click();
-            // Wait for the Properties can be click
-            while (!(OwnerList.Displayed && OwnerList.Enabled))
+            //Click AddNewPropertyBtn
+            (Driver.WaitForElementClickable(
+                By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/a[2]"), 5)).Click();
+            //waiting for the URL change
+            while (!Driver.driver.Title.Contains("AddNewProperty"))
             {
                 Thread.Sleep(100);
             }
 
-            //Select properties page
-            Properties.Click();
+            return new AddNewPropertyPage();
+        }
+
+        internal ListRentalPage ClickListRental()
+        {
+            Driver.WaitForElementClickable(
+                By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/a[1]"), 5);
+            BtnListRental.Click();
+
+            //waiting for the URL change
+            while (!Driver.driver.Url.Contains("ListRental"))
+            {
+                Thread.Sleep(100);
+            }
+
+            return new ListRentalPage();
         }
 
         internal void SearchAProperty()
         {
             try
             {
-
                 //Calling the common methods
-//                Common_methods();
-
                 //Enter the value in the search bar
                 SearchBar.SendKeys("Morgan");
 

@@ -44,6 +44,7 @@ namespace Keys_Onboarding.Global
             if (Keys_Resource.IsLogin == "true")
             {
                 LoginPage loginobj = new LoginPage();
+                // Go to DashboardPage
                 loginobj.LoginSuccessfull();
             }
             else

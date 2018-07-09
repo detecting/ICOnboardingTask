@@ -18,6 +18,8 @@ namespace Keys_Onboarding.Pages
             PageFactory.InitElements(Driver.driver, this);
         }
 
+        #region Define Elements
+
         //Define Owners tab 
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]")]
         private IWebElement Owners { set; get; }
@@ -30,7 +32,10 @@ namespace Keys_Onboarding.Pages
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]")]
         private IWebElement Properties { set; get; }
 
-        public PropertyOwnerPage PropertyOwners()
+        #endregion
+
+
+        public PropertyOwnerPage GotoPropertyOwnersPage()
         {
             Thread.Sleep(1000);
             // Wait for Owner to be clickable

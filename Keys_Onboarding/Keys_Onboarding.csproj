@@ -105,8 +105,11 @@
     <Compile Include="Global\Base.cs" />
     <Compile Include="Global\CommonMethods.cs" />
     <Compile Include="Global\Driver.cs" />
+    <Compile Include="Pages\AddNewPropertyPage.cs" />
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\DashboardPage.cs" />
+    <Compile Include="Pages\FinancedetailsPage.cs" />
+    <Compile Include="Pages\ListRentalPage.cs" />
     <Compile Include="Pages\RegisterPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\PropertyOwnePager.cs" />
