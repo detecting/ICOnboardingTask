@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Keys_Onboarding.Pages
 {
-    class AddNewPropertyPage : BasePage
+    public class AddNewPropertyPage : BasePage
     {
         public AddNewPropertyPage()
         {
@@ -23,79 +23,79 @@ namespace Keys_Onboarding.Pages
         // Define PropertyName input
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[2]/div[1]/div[1]/input[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[2]/div[1]/div[1]/input[1]")]
         IWebElement InputPropertyName { get; set; }
 
         // Define PropertyType DDL
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[2]/div[2]/div[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[2]/div[2]/div[1]")]
         IWebElement DpdPropertyType { get; set; }
 
         // Define SearchAddress Input
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[3]/div[1]/div[1]/input[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[3]/div[1]/div[1]/input[1]")]
         IWebElement InputSearchAddress { get; set; }
 
         // Define Description Text
         [FindsBy(
             How = How.XPath,
-            Using = "//html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[3]/div[2]/div[1]/textarea[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[3]/div[2]/div[1]/textarea[1]")]
         IWebElement TextDescription { get; set; }
 
         // Define TargetRent Input
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[4]/div[1]/div[1]/div[1]/input[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[4]/div[1]/div[1]/div[1]/input[1]")]
         IWebElement InputTargetRent { get; set; }
 
         // Define RentType DDL
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[4]/div[1]/div[2]/div[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[4]/div[1]/div[2]/div[1]")]
         IWebElement DdpRentType { get; set; }
 
         // Define LandArea Input
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[5]/div[1]/div[1]/input[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[5]/div[1]/div[1]/input[1]")]
         IWebElement InputLandArea { get; set; }
 
         // Define FloorArea Input
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[5]/div[2]/div[1]/input[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[5]/div[2]/div[1]/input[1]")]
         IWebElement InputFloorArea { get; set; }
 
         // Define Bedrooms Input
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[6]/div[1]/div[1]/input[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[6]/div[1]/div[1]/input[1]")]
         IWebElement InputBedrooms { get; set; }
 
         // Define Bathrooms Input
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[6]/div[2]/div[1]/input[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[6]/div[2]/div[1]/input[1]")]
         IWebElement InputBathrooms { get; set; }
 
         // Define CarPark Input
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[7]/div[1]/div[1]/input[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[7]/div[1]/div[1]/input[1]")]
         IWebElement InputCarparks { get; set; }
 
         // Define YearBuit Input
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[7]/div[2]/div[1]/input[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[7]/div[2]/div[1]/input[1]")]
         IWebElement InputYearBuilt { get; set; }
 
         // Define OwnerOccupied Check Box
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[8]/div[1]/input[1]")]
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[8]/div[1]/input[1]")]
         IWebElement CBOwnerOccupied { get; set; }
 
         [FindsBy(How = How.XPath,
@@ -125,7 +125,7 @@ namespace Keys_Onboarding.Pages
 
             // wait fot the lsit to show up
             IWebElement listPropertyType = Driver.WaitForElementExist(
-                By.XPath("/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[2]/div[2]/div[1]/div[2]"), 5);
+                By.XPath("/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[2]/div[2]/div[1]/div[2]"), 5);
             var lists = listPropertyType.FindElements(By.TagName("div"));
             foreach (var item in lists)
             {
@@ -174,7 +174,7 @@ namespace Keys_Onboarding.Pages
             IWebElement listsDdpRentType = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(5)).Until(
                 ExpectedConditions.ElementExists(
                     By.XPath(
-                        "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[4]/div[1]/div[2]/div[1]/div[2]")));
+                        "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[4]/div[1]/div[2]/div[1]/div[2]")));
             var lists = listsDdpRentType.FindElements(By.TagName("div"));
             foreach (var item in lists)
             {
@@ -241,24 +241,24 @@ namespace Keys_Onboarding.Pages
             FileUploadBtn.SendKeys(filePath);
         }
 
-        public void FillAllFieldsWithoutTickOwnerOccupied(string propertyName, string propertyType, string
-                searchAddress, string description, string targetRent, string rentType, string landArea,
-            string floorArea,
-            string bedrooms, string bathrooms, string carparks, string yearBuilt, string filePath)
+        public void FillAllFieldsWithoutTickOwnerOccupied()
         {
-            PropertyName(propertyName);
-            PropertyType(propertyType);
-            SearchAddress(searchAddress);
-            Description(description);
-            TargetRent(targetRent);
-            RentType(rentType);
-            LandArea(landArea);
-            FloorArea(floorArea);
-            Bedrooms(bedrooms);
-            Bathrooms(bathrooms);
-            Carparks(carparks);
-            YearBuilt(yearBuilt);
-            FileUpload(filePath);
+            // Populating the data from Excel
+            CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "PropertyDetails");
+
+            PropertyName(CommonMethods.ExcelLib.ReadData(2, "PropertyName"));
+            PropertyType(CommonMethods.ExcelLib.ReadData(2, "PropertyType"));
+            SearchAddress(CommonMethods.ExcelLib.ReadData(2, "SearchAddress"));
+            Description(CommonMethods.ExcelLib.ReadData(2, "Description"));
+            TargetRent(CommonMethods.ExcelLib.ReadData(2, "TargetRent"));
+            RentType(CommonMethods.ExcelLib.ReadData(2, "RentType"));
+            LandArea(CommonMethods.ExcelLib.ReadData(2, "LandArea"));
+            FloorArea(CommonMethods.ExcelLib.ReadData(2, "FloorArea"));
+            Bedrooms(CommonMethods.ExcelLib.ReadData(2, "Bedrooms"));
+            Bathrooms(CommonMethods.ExcelLib.ReadData(2, "Bathrooms"));
+            Carparks(CommonMethods.ExcelLib.ReadData(2, "Carparks"));
+            YearBuilt(CommonMethods.ExcelLib.ReadData(2, "YearBuilt"));
+            FileUpload(CommonMethods.ExcelLib.ReadData(2, "FilePath"));
         }
 
         public void FillAllFields(string propertyName, string propertyType, string
@@ -283,7 +283,7 @@ namespace Keys_Onboarding.Pages
         }
 
         // Click Next
-        internal FinancedetailsPage Next()
+        internal FinancedetailsPage ClickNext()
         {
             // check the button is ok
             if (BtnNext.Displayed && BtnNext.Enabled)

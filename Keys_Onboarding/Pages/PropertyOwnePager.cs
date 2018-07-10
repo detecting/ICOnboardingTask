@@ -63,7 +63,7 @@ namespace Keys_Onboarding
             (Driver.WaitForElementClickable(
                 By.XPath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/a[2]"), 5)).Click();
             //waiting for the URL change
-            while (!Driver.driver.Title.Contains("AddNewProperty"))
+            while (!Driver.driver.Url.Contains("AddNewProperty"))
             {
                 Thread.Sleep(100);
             }

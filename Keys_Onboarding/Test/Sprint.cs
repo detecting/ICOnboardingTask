@@ -28,16 +28,16 @@ namespace Keys_Onboarding.Test
                 propertyOwnerPage.SearchAProperty();
             }
 
-            [Test, Description("Nunit-Create new property!")]
+            [Test, Order(1), Description("Nunit-Fill the Property Details!")]
             public void CreateNewProperty()
             {
                 // Creates a toggle for the given test, adds all log events under it    
                 test = extent.StartTest("Create new property" + GetDateAndTime.GetTimeNow());
                 //Now page is Dashboard, then go to PropertyOwnersPage
-                PropertyOwnerPage propertyOwnerPage=new DashboardPage().GotoPropertyOwnersPage();
+                PropertyOwnerPage propertyOwnerPage = new DashboardPage().GotoPropertyOwnersPage();
                 AddNewPropertyPage addNewPropertyPage = propertyOwnerPage.ClickAddNewPropertyBtn();
                 //Fill details of AddNewProperty Page.
-
+                addNewPropertyPage.FillAllFieldsWithoutTickOwnerOccupied();
             }
         }
     }
