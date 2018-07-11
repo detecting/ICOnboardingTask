@@ -37,13 +37,24 @@ namespace Keys_Onboarding.Test
                 test = extent.StartTest("Create new property" + GetDateAndTime.GetTimeNow());
                 //Now page is Dashboard, then go to PropertyOwnersPage
                 PropertyOwnerPage propertyOwnerPage = new DashboardPage().GotoPropertyOwnersPage();
+
                 AddNewPropertyPage addNewPropertyPage = propertyOwnerPage.ClickAddNewPropertyBtn();
                 //Fill details of AddNewProperty Page.
                 addNewPropertyPage.FillAllFieldsWithoutTickOwnerOccupied();
                 //Verify addNewPropertyPage 
                 addNewPropertyPage.VerifyPropertyDetailsPage();
+
                 //Click Next button and move to financedetailsPage
                 FinancedetailsPage financedetailsPage = addNewPropertyPage.ClickNext();
+                //Fill the detail 
+                financedetailsPage.FillFinanceDetailsPage();
+                //Add repayment
+                financedetailsPage.FillAddRepayment();
+                //Verify Finance Detail Page
+                financedetailsPage.VerifyFinanceDetailsPage();
+
+                //Goto to Tenant Detail Page
+                TenantDetailsPage tenantDetailsPage = financedetailsPage.ClickNext();
             }
         }
     }

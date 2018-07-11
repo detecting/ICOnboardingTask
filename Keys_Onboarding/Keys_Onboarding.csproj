@@ -113,6 +113,7 @@
     <Compile Include="Pages\RegisterPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\PropertyOwnePager.cs" />
+    <Compile Include="Pages\TenantDetailsPage.cs" />
     <Compile Include="Specflow\PO_Steps.cs" />
     <Compile Include="Specflow\SpecFlowFeature.feature.cs">
       <AutoGen>True</AutoGen>
