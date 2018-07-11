@@ -144,7 +144,7 @@ namespace Keys_Onboarding.Global
     {
         public static string GetTimeNow()
         {
-            return DateTime.Now.ToString("-dd-MM-yyyy_mss");
+            return DateTime.Now.ToString("-dd-MM-yyyy_HH:mm:ss");
         }
     }
 

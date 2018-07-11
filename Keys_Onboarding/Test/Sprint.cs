@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Keys_Onboarding.Pages;
+using OpenQA.Selenium;
 
 namespace Keys_Onboarding.Test
 {
@@ -38,6 +40,10 @@ namespace Keys_Onboarding.Test
                 AddNewPropertyPage addNewPropertyPage = propertyOwnerPage.ClickAddNewPropertyBtn();
                 //Fill details of AddNewProperty Page.
                 addNewPropertyPage.FillAllFieldsWithoutTickOwnerOccupied();
+                //Verify addNewPropertyPage 
+                addNewPropertyPage.VerifyPropertyDetailsPage();
+                //Click Next button and move to financedetailsPage
+                FinancedetailsPage financedetailsPage = addNewPropertyPage.ClickNext();
             }
         }
     }

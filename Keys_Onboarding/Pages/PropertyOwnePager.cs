@@ -110,7 +110,7 @@ namespace Keys_Onboarding
                     Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass, "Test Passed, Search successfull");
 
                 else
-                    Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail, "Test Failed, Search Unsuccessfull");
+                    Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail, "Test Failed, Search  ");
             }
 
             catch (Exception e)

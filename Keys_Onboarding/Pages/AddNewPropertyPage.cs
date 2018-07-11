@@ -105,20 +105,20 @@ namespace Keys_Onboarding.Pages
         //Define Next button
         [FindsBy(
             How = How.XPath,
-            Using = "/html[1]/body[1]/div[2]/section[1]/form[1]/fieldset[1]/div[10]/div[1]/button[1]")]
+            Using = "//div[@class='center aligned column']//button[@class='ui teal button'][contains(text(),'Next')]")]
         IWebElement BtnNext { get; set; }
 
         #endregion
 
         //Fill propertyName
-        internal void PropertyName(string propertyName)
+        void PropertyName(string propertyName)
         {
             InputPropertyName.Clear();
             InputPropertyName.SendKeys(propertyName);
         }
 
         // Fill propertyType
-        internal void PropertyType(string propertyType)
+        void PropertyType(string propertyType)
         {
             // click the PropertyType
             DpdPropertyType.Click();
@@ -137,7 +137,7 @@ namespace Keys_Onboarding.Pages
         }
 
         //Fill searchAddress
-        internal void SearchAddress(string searchAddress)
+        void SearchAddress(string searchAddress)
         {
             // clean the InputSearchAddress input
             InputSearchAddress.Clear();
@@ -154,21 +154,21 @@ namespace Keys_Onboarding.Pages
         }
 
         // Fill description
-        internal void Description(string description)
+        void Description(string description)
         {
             TextDescription.Clear();
             TextDescription.SendKeys(description);
         }
 
         // Fill targetRent
-        internal void TargetRent(string targetRent)
+        void TargetRent(string targetRent)
         {
             InputTargetRent.Clear();
             InputTargetRent.SendKeys(targetRent);
         }
 
         // Fill rentType
-        internal void RentType(string rentType)
+        void RentType(string rentType)
         {
             DdpRentType.Click();
             IWebElement listsDdpRentType = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(5)).Until(
@@ -186,49 +186,50 @@ namespace Keys_Onboarding.Pages
         }
 
         // Fill landArea
-        internal void LandArea(string landArea)
+        void LandArea(string landArea)
         {
             InputLandArea.Clear();
             InputLandArea.SendKeys(landArea);
         }
 
         // Fill floorArea
-        internal void FloorArea(string floorArea)
+        void FloorArea(string floorArea)
         {
             InputFloorArea.Clear();
             InputFloorArea.SendKeys(floorArea);
         }
 
         // Fill bedrooms
-        internal void Bedrooms(string bedrooms)
+        void Bedrooms(string bedrooms)
         {
             InputBedrooms.Clear();
             InputBedrooms.SendKeys(bedrooms);
         }
 
         // Fill bathrooms
-        internal void Bathrooms(string bathrooms)
+        void Bathrooms(string bathrooms)
         {
             InputBathrooms.Clear();
             InputBathrooms.SendKeys(bathrooms);
         }
 
         // Fill carparks
-        internal void Carparks(string carparks)
+        void Carparks(string carparks)
         {
             InputCarparks.Clear();
             InputCarparks.SendKeys(carparks);
         }
 
         // Fill yearBuilt
-        internal void YearBuilt(string yearBuilt)
+        void YearBuilt(string yearBuilt)
         {
             InputYearBuilt.Clear();
             InputYearBuilt.SendKeys(yearBuilt);
+            InputYearBuilt.SendKeys(Keys.ArrowDown);
         }
 
         // Tick  OwnerOccupied
-        internal void OwnerOccupied()
+        void OwnerOccupied()
         {
             Thread.Sleep(1000);
             CBOwnerOccupied.Click();
@@ -236,7 +237,7 @@ namespace Keys_Onboarding.Pages
         }
 
         //File Upload
-        internal void FileUpload(string filePath)
+        void FileUpload(string filePath)
         {
             FileUploadBtn.SendKeys(filePath);
         }
@@ -261,38 +262,65 @@ namespace Keys_Onboarding.Pages
             FileUpload(CommonMethods.ExcelLib.ReadData(2, "FilePath"));
         }
 
-        public void FillAllFields(string propertyName, string propertyType, string
-                searchAddress, string description, string targetRent, string rentType, string landArea,
-            string floorArea,
-            string bedrooms, string bathrooms, string carparks, string yearBuilt, string filePath)
+        //Fill all the detail of the page
+        public void FillAllFields()
         {
-            PropertyName(propertyName);
-            PropertyType(propertyType);
-            SearchAddress(searchAddress);
-            Description(description);
-            TargetRent(targetRent);
-            RentType(rentType);
-            LandArea(landArea);
-            FloorArea(floorArea);
-            Bedrooms(bedrooms);
-            Bathrooms(bathrooms);
-            Carparks(carparks);
-            YearBuilt(yearBuilt);
+            // Populating the data from Excel
+            CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "PropertyDetails");
+
+            PropertyName(CommonMethods.ExcelLib.ReadData(2, "PropertyName"));
+            PropertyType(CommonMethods.ExcelLib.ReadData(2, "PropertyType"));
+            SearchAddress(CommonMethods.ExcelLib.ReadData(2, "SearchAddress"));
+            Description(CommonMethods.ExcelLib.ReadData(2, "Description"));
+            TargetRent(CommonMethods.ExcelLib.ReadData(2, "TargetRent"));
+            RentType(CommonMethods.ExcelLib.ReadData(2, "RentType"));
+            LandArea(CommonMethods.ExcelLib.ReadData(2, "LandArea"));
+            FloorArea(CommonMethods.ExcelLib.ReadData(2, "FloorArea"));
+            Bedrooms(CommonMethods.ExcelLib.ReadData(2, "Bedrooms"));
+            Bathrooms(CommonMethods.ExcelLib.ReadData(2, "Bathrooms"));
+            Carparks(CommonMethods.ExcelLib.ReadData(2, "Carparks"));
+            YearBuilt(CommonMethods.ExcelLib.ReadData(2, "YearBuilt"));
             OwnerOccupied();
-            FileUpload(filePath);
+            FileUpload(CommonMethods.ExcelLib.ReadData(2, "FilePath"));
+        }
+
+        //Check the page
+        public void VerifyPropertyDetailsPage()
+        {
+            try
+            {
+                Driver.WaitForElementClickable(
+                    By.XPath("//div[@class='center aligned column']//button[@class='ui teal button'][contains(text(),'Next')]"), 2);
+                if (BtnNext.Displayed && BtnNext.Enabled)
+                {
+                    Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass,
+                        "Property Detail Page testing Passed, Fill all the detail successfull");
+                }
+                else
+                {
+                    Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail,
+                        "Property Detail Page testing Failed, Fill all the detail Unsuccessfull");
+                }
+            }
+            catch (Exception e)
+            {
+                Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail,
+                    "Property Detail Page testing Failed, Fill all the detail Unsuccessfull",
+                    e.Message);
+            }
         }
 
         // Click Next
         internal FinancedetailsPage ClickNext()
         {
-            // check the button is ok
-            if (BtnNext.Displayed && BtnNext.Enabled)
+            while (!BtnNext.Displayed && BtnNext.Enabled)
             {
-                BtnNext.Click();
-                return new FinancedetailsPage();
+                Thread.Sleep(100);
             }
 
-            return null;
+            // check the button is ok
+            BtnNext.Click();
+            return new FinancedetailsPage();
         }
     }
 }
