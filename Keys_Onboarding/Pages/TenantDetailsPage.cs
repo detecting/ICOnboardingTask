@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Keys_Onboarding.Pages
 {
-    class TenantDetailsPage
+    class TenantDetailsPage : BasePage
     {
         public TenantDetailsPage()
         {
@@ -97,12 +97,14 @@ namespace Keys_Onboarding.Pages
         #endregion
 
         #region page methods
+
         //set TenantEmail
         void TenantEmail(string tenantEmail)
         {
             InputTenantEmail.Clear();
             InputTenantEmail.SendKeys(tenantEmail);
         }
+
         //set IsMainTenant
         void IsMainTenant(string isMainTenant)
         {
@@ -117,36 +119,42 @@ namespace Keys_Onboarding.Pages
                 }
             }
         }
+
         //set FirstName
         void FirstName(string firstName)
         {
             InputFirstName.Clear();
             InputFirstName.SendKeys(firstName);
         }
+
         //set LastName
         void LastName(string lastName)
         {
             InputLastName.Clear();
             InputLastName.SendKeys(lastName);
         }
+
         //set StartDate
         void StartDate()
         {
             InputStartDate.Clear();
             InputStartDate.SendKeys(DateTime.Now.ToString("dd/MM/yyyy"));
         }
+
         //set EndDate
         void EndDate(string duration)
         {
             InputEndDate.Clear();
             InputEndDate.SendKeys(DateTime.Now.AddDays(int.Parse(duration)).ToString("dd/MM/yyyy"));
         }
+
         //set RentAmount
         void RentAmount(string rentAmount)
         {
             InputRentAmount.Clear();
             InputRentAmount.SendKeys(rentAmount);
         }
+
         //set Paymentfrequency
         void Paymentfrequency(string paymentfrequency)
         {
@@ -161,12 +169,14 @@ namespace Keys_Onboarding.Pages
                 }
             }
         }
+
         //set PaymentStartDate
         void PaymentStartDate()
         {
             InputPaymentStartDate.Clear();
             InputPaymentStartDate.SendKeys(DateTime.Now.ToString("dd/MM/yyyy"));
         }
+
         //set PaymentDueDay
         void PaymentDueDay(string paymentDueDay)
         {
@@ -181,6 +191,7 @@ namespace Keys_Onboarding.Pages
                 }
             }
         }
+
         //FillTheDetails
         public void FillTheDetails()
         {
@@ -196,6 +207,7 @@ namespace Keys_Onboarding.Pages
             PaymentStartDate();
             PaymentDueDay(CommonMethods.ExcelLib.ReadData(2, "PaymentDueDay"));
         }
+
         //verify the page 
         public void VerifyTenantDetailsPage()
         {
@@ -219,6 +231,7 @@ namespace Keys_Onboarding.Pages
                     e.Message);
             }
         }
+
         //click save button
         public PropertyOwnerPage ClickSave()
         {

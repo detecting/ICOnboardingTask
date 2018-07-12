@@ -30,11 +30,11 @@ namespace Keys_Onboarding.Test
                 propertyOwnerPage.SearchAProperty();
             }
 
-            [Test, Order(1), Description("Nunit-Fill the Property Details!")]
+            [Test, Order(1), Description("Nunit-Create New Property and Verify it!")]
             public void CreateNewProperty()
             {
                 // Creates a toggle for the given test, adds all log events under it    
-                test = extent.StartTest("Create new property" + GetDateAndTime.GetTimeNow());
+                test = extent.StartTest("Create new property and Verity it" + GetDateAndTime.GetTimeNow());
                 //Now page is Dashboard, then go to PropertyOwnersPage
                 PropertyOwnerPage propertyOwnerPage = new DashboardPage().GotoPropertyOwnersPage();
 
@@ -63,7 +63,15 @@ namespace Keys_Onboarding.Test
                 PropertyOwnerPage propertyOwnerPage_SavedNewPro = tenantDetailsPage.ClickSave();
                 // Verify the result
                 propertyOwnerPage_SavedNewPro.SearchPropertiesWhichAdded();
+            }
 
+            [Test, Order(2), Description("Nunit-List A Rental and Verity it")]
+            public void ListARntial()
+            {
+                // Creates a toggle for the given test, adds all log events under it    
+                test = extent.StartTest("List A Rental and Verity it" + GetDateAndTime.GetTimeNow());
+                //Now page is Dashboard, then go to PropertyOwnersPage
+                PropertyOwnerPage propertyOwnerPage = new DashboardPage().GotoPropertyOwnersPage();
             }
         }
     }
