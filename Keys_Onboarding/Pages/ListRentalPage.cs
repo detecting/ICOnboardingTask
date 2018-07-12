@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Keys_Onboarding.Global;
 using OpenQA.Selenium;
@@ -56,14 +57,144 @@ namespace Keys_Onboarding.Pages
         IWebElement BtnSave { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//button[@class=\'btnSeccion ui button\']")]
-        private IWebElement BtnCancel { get; set; }
+        IWebElement BtnCancel { get; set; }
 
         #endregion
 
         #region page methods
 
-        
+        void SelectProperty(string selectProperty)
+        {
+            var lists = DdlSelectePropeties.FindElements(By.TagName("option"));
+            foreach (var item in lists)
+            {
+                if (item.Text == selectProperty)
+                {
+                    item.Click();
+                }
+            }
+        }
+
+        void Title(string title)
+        {
+            InputTitle.Clear();
+            InputTitle.SendKeys(title);
+        }
+
+        void Description(string description)
+        {
+            TextareaDescription.Clear();
+            TextareaDescription.SendKeys(description);
+        }
+
+        void MovingCost(string movingCost)
+        {
+            InputMovingCost.Clear();
+            InputMovingCost.SendKeys(movingCost);
+        }
+
+        void TargetRent(string targetRent)
+        {
+            InputTargetRent.Clear();
+            InputTargetRent.SendKeys(targetRent);
+        }
+
+        void Furnishing(string furnishing)
+        {
+            InputFurnishing.Clear();
+            InputFurnishing.SendKeys(furnishing);
+        }
+
+        void AvailableDate()
+        {
+//            InputAvailableDate.Clear();
+            InputAvailableDate.SendKeys(DateTime.Now.ToString("dd/MM/yyyy"));
+        }
+
+        void IdealTenant(string idealTenant)
+        {
+            InputIdealTenant.Clear();
+            InputIdealTenant.SendKeys(idealTenant);
+        }
+
+        void OccupantsCount(string occupantsCount)
+        {
+            InputOccupantCount.Clear();
+            InputOccupantCount.SendKeys(occupantsCount);
+        }
+
+        void PetsAllowed(string petsAllowed)
+        {
+            var lists = PetsAllowedOption.FindElements(By.TagName("option"));
+            foreach (var item in lists)
+            {
+                if (item.Text == petsAllowed)
+                {
+                    item.Click();
+                }
+            }
+        }
+
+        void FileUpload(string filePath)
+        {
+            BtnfilesUpload.SendKeys(filePath);
+        }
 
         #endregion
+
+        public void FillTheDetails()
+        {
+            CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "ListRentalProperty");
+            SelectProperty(CommonMethods.ExcelLib.ReadData(2, "SelectProperty"));
+            Title(CommonMethods.ExcelLib.ReadData(2, "Title "));
+            Description(CommonMethods.ExcelLib.ReadData(2, "Description"));
+            MovingCost(CommonMethods.ExcelLib.ReadData(2, "MovingCost"));
+            TargetRent(CommonMethods.ExcelLib.ReadData(2, "TargetRent"));
+            Furnishing(CommonMethods.ExcelLib.ReadData(2, "Furnishing"));
+            AvailableDate();
+            IdealTenant(CommonMethods.ExcelLib.ReadData(2, "IdealTenant"));
+            OccupantsCount(CommonMethods.ExcelLib.ReadData(2, "OccupantsCount"));
+            PetsAllowed(CommonMethods.ExcelLib.ReadData(2, "PetsAllowed"));
+            FileUpload(CommonMethods.ExcelLib.ReadData(2, "FilePath"));
+        }
+
+        public void VerfyListRentalPage()
+        {
+            try
+            {
+                Driver.WaitForElementClickable(By.XPath("//button[@class='teal ui button']"), 3);
+                if (BtnSave.Displayed && BtnSave.Enabled)
+                {
+                    Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass,
+                        "List Rental Page testing Passed, Fill the detail successfull");
+                }
+                else
+                {
+                    Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail,
+                        "List Rental Page testing Failed, Fill the detail Unsuccessfull");
+                }
+            }
+            catch (Exception e)
+            {
+                Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail, e.Message);
+            }
+        }
+
+        public RentalPropertiesPage ClickSaveAndAcceptListRental()
+        {
+            while (!BtnSave.Displayed && BtnSave.Enabled)
+            {
+                Thread.Sleep(100);
+            }
+
+            BtnSave.Click();
+            Driver.driver.SwitchTo().Alert().Accept();
+            while (!Driver.driver.Url.Contains("RentalProperties"))
+            {
+                Thread.Sleep(100);
+            }
+
+            return new RentalPropertiesPage();
+        }
     }
 }

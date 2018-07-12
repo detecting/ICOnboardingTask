@@ -43,7 +43,7 @@ namespace Keys_Onboarding.Test
                 addNewPropertyPage.FillAllFieldsWithoutTickOwnerOccupied();
                 //Verify addNewPropertyPage 
                 addNewPropertyPage.VerifyPropertyDetailsPage();
-                
+
                 //Click Next button and move to financedetailsPage
                 FinancedetailsPage financedetailsPage = addNewPropertyPage.ClickNext();
                 //Fill the detail 
@@ -60,18 +60,27 @@ namespace Keys_Onboarding.Test
                 // verify tenantDetailsPage 
                 tenantDetailsPage.VerifyTenantDetailsPage();
                 // Click save button
-                PropertyOwnerPage propertyOwnerPage_SavedNewPro = tenantDetailsPage.ClickSave();
+                PropertyOwnerPage propertyOwnerPageSavedNewPro = tenantDetailsPage.ClickSave();
                 // Verify the result
-                propertyOwnerPage_SavedNewPro.SearchPropertiesWhichAdded();
+                propertyOwnerPageSavedNewPro.SearchPropertiesWhichAdded();
             }
 
             [Test, Order(2), Description("Nunit-List A Rental and Verity it")]
-            public void ListARntial()
+            public void ListARental()
             {
                 // Creates a toggle for the given test, adds all log events under it    
                 test = extent.StartTest("List A Rental and Verity it" + GetDateAndTime.GetTimeNow());
                 //Now page is Dashboard, then go to PropertyOwnersPage
                 PropertyOwnerPage propertyOwnerPage = new DashboardPage().GotoPropertyOwnersPage();
+
+                //move to listRental Page
+                ListRentalPage listRentalPage = propertyOwnerPage.ClickListRental();
+                //Fill the detail of ListRental Page
+                listRentalPage.FillTheDetails();
+                //Verity ListRental Page
+                listRentalPage.VerfyListRentalPage();
+                //Save and Confirm list Rental
+                RentalPropertiesPage rentalPropertiesPage = listRentalPage.ClickSaveAndAcceptListRental();
             }
         }
     }
