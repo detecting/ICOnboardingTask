@@ -43,7 +43,7 @@ namespace Keys_Onboarding.Test
                 addNewPropertyPage.FillAllFieldsWithoutTickOwnerOccupied();
                 //Verify addNewPropertyPage 
                 addNewPropertyPage.VerifyPropertyDetailsPage();
-
+                
                 //Click Next button and move to financedetailsPage
                 FinancedetailsPage financedetailsPage = addNewPropertyPage.ClickNext();
                 //Fill the detail 
@@ -55,6 +55,15 @@ namespace Keys_Onboarding.Test
 
                 //Goto to Tenant Detail Page
                 TenantDetailsPage tenantDetailsPage = financedetailsPage.ClickNext();
+                // fill the data of tenantDetailsPage
+                tenantDetailsPage.FillTheDetails();
+                // verify tenantDetailsPage 
+                tenantDetailsPage.VerifyTenantDetailsPage();
+                // Click save button
+                PropertyOwnerPage propertyOwnerPage_SavedNewPro = tenantDetailsPage.ClickSave();
+                // Verify the result
+                propertyOwnerPage_SavedNewPro.SearchPropertiesWhichAdded();
+
             }
         }
     }

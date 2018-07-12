@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Keys_Onboarding.Specflow
+namespace Keys_Onboarding.Specflow.Features
 {
     using TechTalk.SpecFlow;
     
@@ -18,7 +18,7 @@ namespace Keys_Onboarding.Specflow
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.3.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("PropertyOwnerPage")]
+    [NUnit.Framework.DescriptionAttribute("PropertyOwner")]
     public partial class PropertyOwnerFeature
     {
         
@@ -31,7 +31,7 @@ namespace Keys_Onboarding.Specflow
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PropertyOwnerPage", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PropertyOwner", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         

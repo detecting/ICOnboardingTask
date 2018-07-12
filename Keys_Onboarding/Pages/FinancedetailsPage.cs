@@ -59,7 +59,9 @@ namespace Keys_Onboarding.Pages
         IWebElement BtnSave { get; set; }
 
         //Define Previous button
-        [FindsBy(How = How.XPath, Using = "//div[@class='sixteen wide column text-center']//button[@class='ui button'][contains(text(),'Previous')]")]
+        [FindsBy(How = How.XPath,
+            Using =
+                "//div[@class='sixteen wide column text-center']//button[@class='ui button'][contains(text(),'Previous')]")]
         IWebElement BtnPrevious { get; set; }
 
         //Define Cancel button
@@ -92,6 +94,8 @@ namespace Keys_Onboarding.Pages
         IWebElement BtnAddRepayment { get; set; }
 
         #endregion
+
+        #region page methods
 
         //Get the Name of Page
         string Financedetails()
@@ -137,24 +141,28 @@ namespace Keys_Onboarding.Pages
             }
         }
 
+        //set amount
         void Amount(string amount)
         {
             InputAmount.Clear();
             InputAmount.SendKeys(amount);
         }
 
+        //set start date
         void StartDate()
         {
             InputStartDate.Clear();
-            InputStartDate.SendKeys(DateTime.Now.ToString("d"));
+            InputStartDate.SendKeys(DateTime.Now.ToString("dd/MM/yyyy"));
         }
 
+        //set end date
         void EndDate(string duration)
         {
             InputEndDate.Clear();
-            InputEndDate.SendKeys(DateTime.Now.AddDays(int.Parse(duration)).ToString("d"));
+            InputEndDate.SendKeys(DateTime.Now.AddDays(int.Parse(duration)).ToString("dd/MM/yyyy"));
         }
 
+        //add repayment
         void ClickAddRepayment()
         {
             BtnAddRepayment.Click();
@@ -176,12 +184,14 @@ namespace Keys_Onboarding.Pages
 //            return null;
 //        }
 
+        //fill the repayment
         public void FillAddRepayment()
         {
             //Click AddRepayment button
             ClickAddRepayment();
             //Wait for the element show up
-            Driver.WaitForElementExist(By.XPath("//div[@data-bind=\'foreach: Repayments\']//div[@class=\'ui grid\']"), 2);
+            Driver.WaitForElementExist(By.XPath("//div[@data-bind=\'foreach: Repayments\']//div[@class=\'ui grid\']"),
+                2);
             //Get data from excel
             CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "FinanceDetails");
             //Set Amount
@@ -192,6 +202,7 @@ namespace Keys_Onboarding.Pages
             EndDate(CommonMethods.ExcelLib.ReadData(2, "Duration"));
         }
 
+        //fill the finance detil page
         public void FillFinanceDetailsPage()
         {
             //Get data from excel
@@ -206,6 +217,7 @@ namespace Keys_Onboarding.Pages
             HomeValueType(CommonMethods.ExcelLib.ReadData(2, "HomeValueType"));
         }
 
+        //verity the finance detail page
         public void VerifyFinanceDetailsPage()
         {
             try
@@ -233,6 +245,7 @@ namespace Keys_Onboarding.Pages
             }
         }
 
+        //click next button
         public TenantDetailsPage ClickNext()
         {
             while (!BtnNext.Displayed && BtnNext.Enabled)
@@ -243,5 +256,7 @@ namespace Keys_Onboarding.Pages
             BtnNext.Click();
             return new TenantDetailsPage();
         }
+
+        #endregion
     }
 }

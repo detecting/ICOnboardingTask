@@ -34,6 +34,7 @@ namespace Keys_Onboarding.Pages
 
         #endregion
 
+        #region page methods
 
         public PropertyOwnerPage GotoPropertyOwnersPage()
         {
@@ -49,5 +50,7 @@ namespace Keys_Onboarding.Pages
             // Return to PropertyOwnerPage
             return new PropertyOwnerPage();
         }
+
+        #endregion
     }
 }

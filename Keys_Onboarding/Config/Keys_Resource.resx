@@ -122,22 +122,22 @@
     <comment>1 is for firefox and 2 is for chrome</comment>
   </data>
   <data name="ExcelPath" xml:space="preserve">
-    <value>D:\Users\Morgan\Source\Repos\ICOnboardingTask\Keys_Onboarding\ExcelData\TestData.xlsx</value>
+    <value>C:\Users\Mogan\source\repos\ICOnboardingTask\Keys_Onboarding\ExcelData\TestData.xlsx</value>
   </data>
   <data name="IsLogin" xml:space="preserve">
     <value>true</value>
     <comment>If "true" login else register</comment>
   </data>
   <data name="ReportPath" xml:space="preserve">
-    <value>D:\Users\Morgan\Source\Repos\ICOnboardingTask\Keys_Onboarding\TestReports\KeysReports.html</value>
+    <value>C:\Users\Mogan\source\repos\ICOnboardingTask\Keys_Onboarding\TestReports\KeysReports.html</value>
   </data>
   <data name="ReportXMLPath" xml:space="preserve">
-    <value>D:\Users\Morgan\Source\Repos\ICOnboardingTask\Keys_Onboarding\Config\ReportXML.xml</value>
+    <value>C:\Users\Mogan\source\repos\ICOnboardingTask\Keys_Onboarding\Config\ReportXML.xml</value>
   </data>
   <data name="RowNum" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="ScreenShotPath" xml:space="preserve">
-    <value>D:\Users\Morgan\Source\Repos\ICOnboardingTask\Keys_Onboarding\TestReports\Screenshots</value>
+    <value>C:\Users\Mogan\source\repos\ICOnboardingTask\Keys_Onboarding\TestReports\Screenshots</value>
   </data>
 </root>
