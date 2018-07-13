@@ -19,7 +19,7 @@ namespace Keys_Onboarding.Config {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Keys_Resource {
@@ -70,7 +70,7 @@ namespace Keys_Onboarding.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Mogan\source\repos\ICOnboardingTask\Keys_Onboarding\ExcelData\TestData.xlsx.
+        ///   Looks up a localized string similar to C:\Users\hzha321\Source\Repos\automationOnboardingSample-master\Keys_Onboarding\ExcelData\TestData.xlsx.
         /// </summary>
         internal static string ExcelPath {
             get {
@@ -88,7 +88,7 @@ namespace Keys_Onboarding.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Mogan\source\repos\ICOnboardingTask\Keys_Onboarding\TestReports\KeysReports.html.
+        ///   Looks up a localized string similar to C:\Users\hzha321\Source\Repos\automationOnboardingSample-master\Keys_Onboarding\TestReports\KeysReports.html.
         /// </summary>
         internal static string ReportPath {
             get {
@@ -97,7 +97,7 @@ namespace Keys_Onboarding.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Mogan\source\repos\ICOnboardingTask\Keys_Onboarding\Config\ReportXML.xml.
+        ///   Looks up a localized string similar to C:\Users\hzha321\Source\Repos\automationOnboardingSample-master\Keys_Onboarding\Config\ReportXML.xml.
         /// </summary>
         internal static string ReportXMLPath {
             get {
@@ -115,7 +115,7 @@ namespace Keys_Onboarding.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Mogan\source\repos\ICOnboardingTask\Keys_Onboarding\TestReports\Screenshots.
+        ///   Looks up a localized string similar to C:\Users\hzha321\Source\Repos\automationOnboardingSample-master\Keys_Onboarding\TestReports\Screenshots.
         /// </summary>
         internal static string ScreenShotPath {
             get {

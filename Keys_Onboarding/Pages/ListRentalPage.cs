@@ -19,43 +19,56 @@ namespace Keys_Onboarding.Pages
 
         #region define elements
 
+        //define SelectePropeties
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[2]/select[1]")]
         IWebElement DdlSelectePropeties { get; set; }
 
+        //define Title
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[3]/div[1]/input[1]")]
         IWebElement InputTitle { get; set; }
 
+        //define Description
         [FindsBy(How = How.XPath,
             Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[3]/div[2]/textarea[1]")]
         IWebElement TextareaDescription { get; set; }
 
+        //define MovingCost
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[3]/div[1]/input[2]")]
         IWebElement InputMovingCost { get; set; }
 
+        //define TargetRent
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[4]/div[1]/input[1]")]
         IWebElement InputTargetRent { get; set; }
 
+        //define Furnishing
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[4]/div[2]/input[1]")]
         IWebElement InputFurnishing { get; set; }
 
+        //define AvailableDate
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[5]/div[1]/input[1]")]
         IWebElement InputAvailableDate { get; set; }
 
+        //define IdealTenant 
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[5]/div[2]/input[1]")]
         IWebElement InputIdealTenant { get; set; }
 
+        //define OccupantCount
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[6]/div[1]/input[1]")]
         IWebElement InputOccupantCount { get; set; }
 
+        //define PetsAllowedO
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[6]/div[2]/select[1]")]
         IWebElement PetsAllowedOption { get; set; }
 
+        //define filesUpload
         [FindsBy(How = How.XPath, Using = "//input[@id='file-upload']")]
         IWebElement BtnfilesUpload { get; set; }
 
+        //define Save
         [FindsBy(How = How.XPath, Using = "//button[@class='teal ui button']")]
         IWebElement BtnSave { get; set; }
 
+        //define Cancel
         [FindsBy(How = How.XPath, Using = "//button[@class=\'btnSeccion ui button\']")]
         IWebElement BtnCancel { get; set; }
 
@@ -142,6 +155,9 @@ namespace Keys_Onboarding.Pages
 
         #endregion
 
+        /// <summary>
+        /// fill the form
+        /// </summary>
         public void FillTheDetails()
         {
             CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "ListRentalProperty");
@@ -158,6 +174,9 @@ namespace Keys_Onboarding.Pages
             FileUpload(CommonMethods.ExcelLib.ReadData(2, "FilePath"));
         }
 
+        /// <summary>
+        /// verify Save button is clickable
+        /// </summary>
         public void VerfyListRentalPage()
         {
             try
@@ -180,6 +199,10 @@ namespace Keys_Onboarding.Pages
             }
         }
 
+        /// <summary>
+        /// Save and accept 
+        /// </summary>
+        /// <returns></returns>
         public RentalPropertiesPage ClickSaveAndAcceptListRental()
         {
             while (!BtnSave.Displayed && BtnSave.Enabled)

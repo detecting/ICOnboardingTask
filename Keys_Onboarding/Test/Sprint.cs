@@ -81,6 +81,7 @@ namespace Keys_Onboarding.Test
                 listRentalPage.VerfyListRentalPage();
                 //Save and Confirm list Rental
                 RentalPropertiesPage rentalPropertiesPage = listRentalPage.ClickSaveAndAcceptListRental();
+                rentalPropertiesPage.CheckRentalWhichAdded();
             }
         }
     }
