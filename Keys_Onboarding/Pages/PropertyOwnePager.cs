@@ -58,14 +58,16 @@ namespace Keys_Onboarding
 
         //define properties lists
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]")]
-        IWebElement PropertiesList { get; set; }
+        IWebElement PropertiesLists { get; set; }
 
         #endregion
 
         #region page methods
 
-        
-
+        /// <summary>
+        /// click add property button 
+        /// </summary>
+        /// <returns></returns>
         internal AddNewPropertyPage ClickAddNewPropertyBtn()
         {
             //Click AddNewPropertyBtn
@@ -80,6 +82,10 @@ namespace Keys_Onboarding
             return new AddNewPropertyPage();
         }
 
+        /// <summary>
+        /// click list rental
+        /// </summary>
+        /// <returns></returns>
         internal ListRentalPage ClickListRental()
         {
             Driver.WaitForElementClickable(
@@ -95,6 +101,9 @@ namespace Keys_Onboarding
             return new ListRentalPage();
         }
 
+        /// <summary>
+        /// search the property
+        /// </summary>
         internal void SearchAProperty()
         {
             try
@@ -129,17 +138,24 @@ namespace Keys_Onboarding
             }
         }
 
-        // fill the search box and click search button
+        /// <summary>
+        /// fill the search box and click search button
+        /// </summary>
+        /// <param name="propertyName"></param>
         void FillSearchBoxAndCLickSearch(string propertyName)
         {
             SearchBar.Clear();
             SearchBar.SendKeys(propertyName);
             SearchButton.Click();
         }
-
-        void CheckResults(string propertyName, string propertyAdd)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="propertyAdd"></param>
+        void CheckResults(string propertyName)
         {
-            var lists = PropertiesList.FindElements(By.TagName("div"));
+            var lists = PropertiesLists.FindElements(By.TagName("div"));
             try
             {
                 foreach (var item in lists)
@@ -151,7 +167,6 @@ namespace Keys_Onboarding
                             "Result Searching testing Passed, Search result by property name successfull");
                         goto Done;
                     }
-              
                 }
 
                 Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail,
@@ -169,10 +184,9 @@ namespace Keys_Onboarding
         public void SearchPropertiesWhichAdded()
         {
             //get input data from Excel 
-            CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "PropertyDetails");
+            ExcelLib.PopulateInCollection(Base.ExcelPath, "PropertyDetails");
             // get the Property Name which just input
-            string propertyNameexpected = CommonMethods.ExcelLib.ReadData(2, "PropertyName");
-            string propertyAdd = CommonMethods.ExcelLib.ReadData(2, "SearchAddress");
+            string propertyNameexpected = ExcelLib.ReadData(2, "PropertyName");
             //fill the search box and click the search button
             FillSearchBoxAndCLickSearch(propertyNameexpected);
             //wait for the page jumps
@@ -182,9 +196,45 @@ namespace Keys_Onboarding
             }
 
             //search the result and verify it.
-            CheckResults(propertyNameexpected, propertyAdd);
+            CheckResults(propertyNameexpected);
         }
-        #endregion
 
+
+        public AddTenantDashboardPage ClickAddTenantAccordingToPropertyName()
+        {
+            //set the property name which want to add tenant
+            ExcelLib.PopulateInCollection(Base.ExcelPath, "AddTenant");
+            string propertyName = ExcelLib.ReadData(2, "PropertyName");
+            //get the list of properties*******************************
+            var lists = PropertiesLists.FindElements(By.XPath("//div[@class='ui raised segment']"));
+            //to click the Add Tenant button with propertyName
+            foreach (var item in lists)
+            {
+                if (item.FindElement(By.TagName("h3")).Text == propertyName)
+                {
+                    //use css to get the elements if there are spaces in the class name
+                    //*****************************************************************
+                    var listA = item.FindElements(By.CssSelector("a.ui.basic.mini.teal.button"));
+                    foreach (var itemA in listA)
+                    {
+                        if (itemA.Text == "Add Tenant")
+                        {
+                            itemA.Click();
+                            goto done;
+                        }
+                    }
+                }
+            }
+
+            done:
+            while (!Driver.driver.Url.Contains("AddTenantDashboard"))
+            {
+                Thread.Sleep(100);
+            }
+            //go to AddTenantDashboardPage
+            return new AddTenantDashboardPage();
+        }
+
+        #endregion
     }
 }

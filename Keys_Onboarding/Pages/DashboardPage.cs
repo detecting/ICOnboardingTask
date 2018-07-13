@@ -22,7 +22,7 @@ namespace Keys_Onboarding.Pages
 
         //Define Owners tab 
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]")]
-        private IWebElement Owners { set; get; }
+        IWebElement Owners { set; get; }
 
         // Find Owner List
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]")]
@@ -30,7 +30,9 @@ namespace Keys_Onboarding.Pages
 
         //Define Properties page
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/a[1]")]
-        private IWebElement Properties { set; get; }
+        IWebElement Properties { set; get; }
+
+       
 
         #endregion
 

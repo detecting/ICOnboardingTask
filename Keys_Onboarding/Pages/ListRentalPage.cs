@@ -162,7 +162,7 @@ namespace Keys_Onboarding.Pages
         {
             CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "ListRentalProperty");
             SelectProperty(CommonMethods.ExcelLib.ReadData(2, "SelectProperty"));
-            Title(CommonMethods.ExcelLib.ReadData(2, "Title "));
+            Title(CommonMethods.ExcelLib.ReadData(2, "Title"));
             Description(CommonMethods.ExcelLib.ReadData(2, "Description"));
             MovingCost(CommonMethods.ExcelLib.ReadData(2, "MovingCost"));
             TargetRent(CommonMethods.ExcelLib.ReadData(2, "TargetRent"));

@@ -77,7 +77,7 @@ namespace Keys_Onboarding.Pages
                 //iterate to check expectation equals to dispalyed title
                 foreach (var item in lists)
                 {
-                    if (item.GetAttribute("text") == expectation)
+                    if (item.Text == expectation)
                     {
                         Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass,
                             "Result Searching testing Passed, Search result by Rental Title name successfull");

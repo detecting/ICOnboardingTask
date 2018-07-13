@@ -83,6 +83,20 @@ namespace Keys_Onboarding.Test
                 RentalPropertiesPage rentalPropertiesPage = listRentalPage.ClickSaveAndAcceptListRental();
                 rentalPropertiesPage.CheckRentalWhichAdded();
             }
+
+            [Test, Order(3), Description("Nunit-Add Tenant and Verify it")]
+            public void AddTenant()
+            {
+                // Creates a toggle for the given test, adds all log events under it    
+                test = extent.StartTest("Add Tenant  and Verity it" + GetDateAndTime.GetTimeNow());
+                //Now page is Dashboard, then go to PropertyOwnersPage
+                PropertyOwnerPage propertyOwnerPage = new DashboardPage().GotoPropertyOwnersPage();
+                AddTenantDashboardPage addTenantDashboardPage =
+                    propertyOwnerPage.ClickAddTenantAccordingToPropertyName();
+                addTenantDashboardPage.FillTheDetails();
+                addTenantDashboardPage.VerifyTenantDetailsPage();
+                LiabilitiesDetailsPage liabilitiesDetailsPage = addTenantDashboardPage.ClickNext();
+            }
         }
     }
 }
