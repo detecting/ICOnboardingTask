@@ -104,6 +104,8 @@
     <Compile Include="Global\Base.cs" />
     <Compile Include="Global\CommonMethods.cs" />
     <Compile Include="Global\Driver.cs" />
+    <Compile Include="Specflow\Steps\AddTenantSteps.cs" />
+    <Compile Include="Specflow\Steps\ListARentalSteps.cs" />
     <Compile Include="Pages\AddNewPropertyPage.cs" />
     <Compile Include="Pages\AddTenantDashboardPage.cs" />
     <Compile Include="Pages\BasePage.cs" />
@@ -117,6 +119,23 @@
     <Compile Include="Pages\RentalPropertiesPage.cs" />
     <Compile Include="Pages\SummaryPage.cs" />
     <Compile Include="Pages\TenantDetailsPage.cs" />
+    <Compile Include="Specflow\Features\AddTenant.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddTenant.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Specflow\Features\CreateNewProperty.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateNewProperty.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Specflow\Features\ListARental.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListARental.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Specflow\Hooks\Hooks.cs" />
+    <Compile Include="Specflow\Steps\CreateNewPropertySteps.cs" />
     <Compile Include="Specflow\Steps\PO_Steps.cs" />
     <Compile Include="Specflow\Features\PO_Steps.feature.cs">
       <AutoGen>True</AutoGen>
@@ -129,6 +148,18 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Specflow\Features\AddTenant.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AddTenant.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Specflow\Features\CreateNewProperty.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateNewProperty.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Specflow\Features\ListARental.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ListARental.feature.cs</LastGenOutput>
+    </None>
     <None Include="Specflow\Features\PO_Steps.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>PO_Steps.feature.cs</LastGenOutput>

@@ -14,6 +14,7 @@ namespace Keys_Onboarding
 {
     public class PropertyOwnerPage : BasePage
     {
+        //define the number to store tenants number
         static int numberOfTenants;
 
         public PropertyOwnerPage()
@@ -152,7 +153,7 @@ namespace Keys_Onboarding
         }
 
         /// <summary>
-        /// 
+        /// To check if the tenant is added
         /// </summary>
         /// <param name="propertyName"></param>
         /// <param name="propertyAdd"></param>
@@ -184,6 +185,9 @@ namespace Keys_Onboarding
             }
         }
 
+        /// <summary>
+        /// Search the property which just be created.
+        /// </summary>
         public void SearchPropertiesWhichAdded()
         {
             //get input data from Excel 
@@ -202,7 +206,10 @@ namespace Keys_Onboarding
             CheckResults(propertyNameexpected);
         }
 
-
+        /// <summary>
+        /// read property name from excel and click the releative addTenant button
+        /// </summary>
+        /// <returns></returns>
         public AddTenantDashboardPage ClickAddTenantAccordingToPropertyName()
         {
             //set the property name which want to add tenant
@@ -240,7 +247,9 @@ namespace Keys_Onboarding
             //go to AddTenantDashboardPage
             return new AddTenantDashboardPage();
         }
-
+        /// <summary>
+        /// Check the number of tenant is changed after add tenant.
+        /// </summary>
         public void VerifyAddTenant()
         {
             try

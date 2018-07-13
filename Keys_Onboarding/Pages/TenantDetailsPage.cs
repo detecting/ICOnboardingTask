@@ -137,14 +137,16 @@ namespace Keys_Onboarding.Pages
         //set StartDate
         void StartDate()
         {
-            InputStartDate.Clear();
+            InputStartDate.Click();
+            InputStartDate.SendKeys(Keys.Control+"a");
             InputStartDate.SendKeys(DateTime.Now.ToString("dd/MM/yyyy"));
         }
 
         //set EndDate
         void EndDate(string duration)
         {
-            InputEndDate.Clear();
+            InputEndDate.Click();
+            InputEndDate.SendKeys(Keys.Control + "a");
             InputEndDate.SendKeys(DateTime.Now.AddDays(int.Parse(duration)).ToString("dd/MM/yyyy"));
         }
 
@@ -173,7 +175,8 @@ namespace Keys_Onboarding.Pages
         //set PaymentStartDate
         void PaymentStartDate()
         {
-            InputPaymentStartDate.Clear();
+            InputPaymentStartDate.Click();
+            InputPaymentStartDate.SendKeys(Keys.Control+'a');
             InputPaymentStartDate.SendKeys(DateTime.Now.ToString("dd/MM/yyyy"));
         }
 
@@ -192,7 +195,10 @@ namespace Keys_Onboarding.Pages
             }
         }
 
-        //FillTheDetails
+        #endregion
+        /// <summary>
+        /// FillTheDetails
+        /// </summary>
         public void FillTheDetails()
         {
             CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "TenantDetails");
@@ -208,7 +214,9 @@ namespace Keys_Onboarding.Pages
             PaymentDueDay(CommonMethods.ExcelLib.ReadData(2, "PaymentDueDay"));
         }
 
-        //verify the page 
+        /// <summary>
+        /// verify the page 
+        /// </summary>
         public void VerifyTenantDetailsPage()
         {
             try
@@ -248,7 +256,5 @@ namespace Keys_Onboarding.Pages
 
             return new PropertyOwnerPage();
         }
-
-        #endregion
     }
 }

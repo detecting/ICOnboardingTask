@@ -151,14 +151,18 @@ namespace Keys_Onboarding.Pages
         //set start date
         void StartDate()
         {
-            InputStartDate.Clear();
+            InputStartDate.Click();
+            //*********************************************
+            InputStartDate.SendKeys(Keys.Control+'a');
             InputStartDate.SendKeys(DateTime.Now.ToString("dd/MM/yyyy"));
         }
 
         //set end date
         void EndDate(string duration)
         {
-            InputEndDate.Clear();
+            //************************************************
+            InputEndDate.Click();
+            InputEndDate.SendKeys(Keys.Control + 'a');
             InputEndDate.SendKeys(DateTime.Now.AddDays(int.Parse(duration)).ToString("dd/MM/yyyy"));
         }
 
@@ -167,22 +171,7 @@ namespace Keys_Onboarding.Pages
         {
             BtnAddRepayment.Click();
         }
-
-//        public MyPropertiesPage Save()
-//        {
-//            if (BtnSave.Displayed && BtnSave.Enabled)
-//            {
-//                BtnSave.Click();
-//
-//                // waiting for the new page to loaded.
-//                new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(10)).Until(
-//                    ExpectedConditions.ElementExists(
-//                        By.XPath("/html[1]/body[1]/div[2]/section[1]/div[1]/div[1]/div[3]/div[1]")));
-//                return new MyPropertiesPage();
-//            }
-//
-//            return null;
-//        }
+        #endregion
 
         //fill the repayment
         public void FillAddRepayment()
@@ -222,6 +211,7 @@ namespace Keys_Onboarding.Pages
         {
             try
             {
+                //check next button is aviliable 
                 Driver.WaitForElementClickable(
                     By.XPath(
                         "//div[@class=\'sixteen wide column text-center\']//button[@class=\'ui teal button\'][contains(text(),\'Next\')]"),
@@ -245,7 +235,7 @@ namespace Keys_Onboarding.Pages
             }
         }
 
-        //click next button
+        //click next button and go to TenantDetailsPage
         public TenantDetailsPage ClickNext()
         {
             while (!BtnNext.Displayed && BtnNext.Enabled)
@@ -257,6 +247,5 @@ namespace Keys_Onboarding.Pages
             return new TenantDetailsPage();
         }
 
-        #endregion
     }
 }

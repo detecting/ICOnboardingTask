@@ -9,6 +9,9 @@ namespace Keys_Onboarding.Pages
 {
     public class BasePage
     {
+        /// <summary>
+        /// global wait
+        /// </summary>
         public BasePage()
         {
             Driver.wait(10);

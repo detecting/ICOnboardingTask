@@ -13,6 +13,10 @@ namespace Keys_Onboarding.Global
             PageFactory.InitElements(Driver.driver, this);
         }
 
+        #region define elements
+
+        
+
         //Click on SignUp Link
         [FindsBy(How = How.XPath, Using = "//*[@id='sign_in']/div[3]/a")]
         private IWebElement RegisterLink { get; set; }
@@ -44,7 +48,11 @@ namespace Keys_Onboarding.Global
         //Click on SignUp Button
         [FindsBy(How = How.XPath, Using = "//*[@id='SignupButton']")]
         private IWebElement Registerbutton { get; set; }
+        #endregion
 
+        /// <summary>
+        /// go to register page
+        /// </summary>
         internal void Navigateregister()
         {
             ExcelLib.PopulateInCollection(Base.ExcelPath, "Register");

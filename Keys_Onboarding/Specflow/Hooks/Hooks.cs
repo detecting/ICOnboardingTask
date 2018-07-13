@@ -1,37 +1,28 @@
-﻿using Keys_Onboarding.Config;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Keys_Onboarding.Config;
+using Keys_Onboarding.Global;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using RelevantCodes.ExtentReports;
-using System;
-using Keys_Onboarding.Pages;
-using static Keys_Onboarding.Global.CommonMethods;
-namespace Keys_Onboarding.Global
+using TechTalk.SpecFlow;
+
+namespace Keys_Onboarding.Specflow.Hooks
 {
-   public class Base
+    [Binding]
+    public class Hooks : Base
     {
-        #region To access Path from resource file
-
-        public static int Browser = Int32.Parse(Keys_Resource.Browser);
-        public static String ExcelPath = Keys_Resource.ExcelPath;
-        public static string ScreenshotPath = Keys_Resource.ScreenShotPath;
-        public static string ReportPath = Keys_Resource.ReportPath;
-        //#endregion
-
-        #region reports
-        public static ExtentTest test;
-        public static ExtentReports extent;
-        #endregion
-
-        #region setup and tear down
-        [SetUp]
-        public void Inititalize()
+        
+        [BeforeScenario]
+        public void Inititalize_specflow()
         {
-
             // advisasble to read this documentation before proceeding http://extentreports.relevantcodes.com/net/
             switch (Browser)
             {
-
                 case 1:
                     Driver.driver = new FirefoxDriver();
                     break;
@@ -39,8 +30,8 @@ namespace Keys_Onboarding.Global
                     Driver.driver = new ChromeDriver();
                     Driver.driver.Manage().Window.Maximize();
                     break;
-
             }
+
             if (Keys_Resource.IsLogin == "true")
             {
                 LoginPage loginobj = new LoginPage();
@@ -58,11 +49,13 @@ namespace Keys_Onboarding.Global
         }
 
 
-        [TearDown]
-        public void TearDown()
+        [AfterScenario]
+        public void TearDown_specflow()
         {
             // Screenshot
-            String img = SaveScreenShotClass.SaveScreenshot(Driver.driver, "Report");//AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
+            String img =
+                CommonMethods.SaveScreenShotClass.SaveScreenshot(Driver.driver,
+                    "Report"); //AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
             test.Log(LogStatus.Info, "Image example: " + img);
             // end test. (Reports)
             extent.EndTest(test);
@@ -70,9 +63,7 @@ namespace Keys_Onboarding.Global
             extent.Flush();
             // Close the driver :)            
             Driver.driver.Close();
-        }
-        #endregion
+        }   
 
     }
 }
-#endregion

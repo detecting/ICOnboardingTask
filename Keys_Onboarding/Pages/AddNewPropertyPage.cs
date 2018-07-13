@@ -110,6 +110,8 @@ namespace Keys_Onboarding.Pages
 
         #endregion
 
+        #region page methods
+
         //Fill propertyName
         void PropertyName(string propertyName)
         {
@@ -144,7 +146,7 @@ namespace Keys_Onboarding.Pages
 
             // full the InputSearchAddress
             InputSearchAddress.SendKeys(searchAddress);
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             // press down key
             InputSearchAddress.SendKeys(Keys.ArrowDown);
@@ -242,11 +244,16 @@ namespace Keys_Onboarding.Pages
             FileUploadBtn.SendKeys(filePath);
         }
 
+        #endregion
+
+        /// <summary>
+        /// fill the form detail
+        /// </summary>
         public void FillAllFieldsWithoutTickOwnerOccupied()
         {
             // Populating the data from Excel
             CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "PropertyDetails");
-
+            //fill the form
             PropertyName(CommonMethods.ExcelLib.ReadData(2, "PropertyName"));
             PropertyType(CommonMethods.ExcelLib.ReadData(2, "PropertyType"));
             SearchAddress(CommonMethods.ExcelLib.ReadData(2, "SearchAddress"));
@@ -262,7 +269,9 @@ namespace Keys_Onboarding.Pages
             FileUpload(CommonMethods.ExcelLib.ReadData(2, "FilePath"));
         }
 
-        //Fill all the detail of the page
+        /// <summary>
+        /// Fill all the detail of the page
+        /// </summary>
         public void FillAllFields()
         {
             // Populating the data from Excel
@@ -284,13 +293,17 @@ namespace Keys_Onboarding.Pages
             FileUpload(CommonMethods.ExcelLib.ReadData(2, "FilePath"));
         }
 
-        //Check the page
+        /// <summary>
+        /// Check the page
+        /// </summary>
         public void VerifyPropertyDetailsPage()
         {
             try
             {
                 Driver.WaitForElementClickable(
-                    By.XPath("//div[@class='center aligned column']//button[@class='ui teal button'][contains(text(),'Next')]"), 2);
+                    By.XPath(
+                        "//div[@class='center aligned column']//button[@class='ui teal button'][contains(text(),'Next')]"),
+                    2);
                 if (BtnNext.Displayed && BtnNext.Enabled)
                 {
                     Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass,
@@ -304,13 +317,14 @@ namespace Keys_Onboarding.Pages
             }
             catch (Exception e)
             {
-                Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail,
-                    "Property Detail Page testing Failed, Fill all the detail Unsuccessfull",
-                    e.Message);
+                Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail, e.Message);
             }
         }
 
-        // Click Next
+        /// <summary>
+        /// Click Next
+        /// </summary>
+        /// <returns></returns>
         internal FinancedetailsPage ClickNext()
         {
             while (!BtnNext.Displayed && BtnNext.Enabled)

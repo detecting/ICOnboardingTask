@@ -35,7 +35,10 @@ namespace Keys_Onboarding.Pages
         #endregion
 
         #region page methods
-
+        /// <summary>
+        /// click submit button 
+        /// </summary>
+        /// <returns></returns>
         public PropertyOwnerPage ClickSubmit()
         {
             while (!BtnSubmit.Displayed && BtnSubmit.Enabled)

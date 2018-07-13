@@ -17,7 +17,7 @@ namespace Keys_Onboarding.Pages
             PageFactory.InitElements(Driver.driver, this);
         }
 
-        #region MyRegion
+        #region define elements
 
         //define previous button
         [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[2]/div[2]/div[1]/button[1]")]
@@ -38,7 +38,7 @@ namespace Keys_Onboarding.Pages
         #endregion
 
         #region page methods
-
+        //click next and go to SummaryPage
         public SummaryPage ClickNextBtn()
         {
             while (!BtnNext.Displayed && BtnNext.Enabled)

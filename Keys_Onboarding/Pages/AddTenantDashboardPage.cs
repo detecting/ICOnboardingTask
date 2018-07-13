@@ -15,8 +15,9 @@ namespace Keys_Onboarding.Pages
     {
         public AddTenantDashboardPage()
         {
-            PageFactory.InitElements(Driver.driver,this);
+            PageFactory.InitElements(Driver.driver, this);
         }
+
         #region define elements
 
         //Define Tenant Email
@@ -38,11 +39,13 @@ namespace Keys_Onboarding.Pages
         IWebElement InputLastName { get; set; }
 
         //Define Start date
-        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[5]/div[1]/div[1]/input[1]")]
+        [FindsBy(How = How.XPath,
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[5]/div[1]/div[1]/input[1]")]
         IWebElement InputRentStartDate { get; set; }
 
         //define end date
-        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[5]/div[2]/div[1]/input[1]")]
+        [FindsBy(How = How.XPath,
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[5]/div[2]/div[1]/input[1]")]
         IWebElement InputRentEndDate { get; set; }
 
         // define rent amount
@@ -56,7 +59,8 @@ namespace Keys_Onboarding.Pages
         IWebElement DdlPaymentFrequancy { get; set; }
 
         // define Payment Start Date
-        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[7]/div[1]/div[1]/input[1]")]
+        [FindsBy(How = How.XPath,
+            Using = "/html[1]/body[1]/div[2]/div[1]/form[1]/fieldset[1]/div[7]/div[1]/div[1]/input[1]")]
         IWebElement InputPaymentStartDate { get; set; }
 
         //define Payment Due Day DDL
@@ -102,6 +106,7 @@ namespace Keys_Onboarding.Pages
         void FirstName(string firstName)
         {
             InputFirstName.Clear();
+            Thread.Sleep(500);
             InputFirstName.SendKeys(firstName);
         }
 
@@ -109,21 +114,27 @@ namespace Keys_Onboarding.Pages
         void LastName(string lastName)
         {
             InputLastName.Clear();
+            Thread.Sleep(500);
             InputLastName.SendKeys(lastName);
         }
 
         //set RentStartDate
         void RentStartDate()
         {
-            InputRentStartDate.Clear();
+            InputRentEndDate.Click();
+            //InputRentEndDate.SendKeys(Keys.Backspace);
+            InputRentEndDate.SendKeys(Keys.Control + 'a');
             InputRentStartDate.SendKeys(DateTime.Now.ToString("dd/MM/yyyy"));
         }
 
         //set RentEndDate
         void RentEndDate(string duration)
         {
-            InputRentEndDate.Clear();
-            InputRentEndDate.SendKeys(DateTime.Now.AddDays(int.Parse(duration)).ToString("dd/MM/yyyy"));
+            InputRentEndDate.Click();
+//            InputRentEndDate.SendKeys(Keys.Backspace);
+            InputRentEndDate.SendKeys(Keys.Control+'a');
+            string date = DateTime.Now.AddDays(int.Parse(duration)).ToString("dd/MM/yyyy");
+            InputRentEndDate.SendKeys(date);
         }
 
         //set RentAmount
@@ -166,11 +177,13 @@ namespace Keys_Onboarding.Pages
             }
         }
 
+        #endregion
+
         //FillTheDetails
         public void FillTheDetails()
         {
             CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "AddTenantDetails");
-            TenantEmail(DateTime.Now.ToString("hhmmss")+CommonMethods.ExcelLib.ReadData(2, "TenantEmail"));
+            TenantEmail(DateTime.Now.ToString("hhmmss") + CommonMethods.ExcelLib.ReadData(2, "TenantEmail"));
             IsMainTenant(CommonMethods.ExcelLib.ReadData(2, "IsMainTenant"));
             FirstName(CommonMethods.ExcelLib.ReadData(2, "FirstName"));
             LastName(CommonMethods.ExcelLib.ReadData(2, "LastName"));
@@ -206,16 +219,19 @@ namespace Keys_Onboarding.Pages
             }
         }
 
+        /// <summary>
+        /// click next and go to LiabilitiesDetailsPage
+        /// </summary>
+        /// <returns></returns>
         public LiabilitiesDetailsPage ClickNext()
         {
-            while (!BtnNext.Displayed&&BtnNext.Enabled)
+            while (!BtnNext.Displayed && BtnNext.Enabled)
             {
                 Thread.Sleep(100);
             }
+
             BtnNext.Click();
             return new LiabilitiesDetailsPage();
         }
-        #endregion
-
     }
 }
