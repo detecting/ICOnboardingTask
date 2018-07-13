@@ -14,6 +14,8 @@ namespace Keys_Onboarding
 {
     public class PropertyOwnerPage : BasePage
     {
+        static int numberOfTenants;
+
         public PropertyOwnerPage()
         {
             PageFactory.InitElements(Global.Driver.driver, this);
@@ -148,6 +150,7 @@ namespace Keys_Onboarding
             SearchBar.SendKeys(propertyName);
             SearchButton.Click();
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -212,6 +215,8 @@ namespace Keys_Onboarding
             {
                 if (item.FindElement(By.TagName("h3")).Text == propertyName)
                 {
+                    //store the number of tenant before add tenant
+                    numberOfTenants = int.Parse(item.FindElement(By.Id("all-tenants")).Text);
                     //use css to get the elements if there are spaces in the class name
                     //*****************************************************************
                     var listA = item.FindElements(By.CssSelector("a.ui.basic.mini.teal.button"));
@@ -231,8 +236,49 @@ namespace Keys_Onboarding
             {
                 Thread.Sleep(100);
             }
+
             //go to AddTenantDashboardPage
             return new AddTenantDashboardPage();
+        }
+
+        public void VerifyAddTenant()
+        {
+            try
+            {
+                //set the property name which add tenant
+                ExcelLib.PopulateInCollection(Base.ExcelPath, "AddTenant");
+                string propertyName = ExcelLib.ReadData(2, "PropertyName");
+                //get the list of properties*******************************
+                var lists = PropertiesLists.FindElements(By.XPath("//div[@class='ui raised segment']"));
+                //to click the Add Tenant button with propertyName
+                foreach (var item in lists)
+                {
+                    if (item.FindElement(By.TagName("h3")).Text == propertyName)
+                    {
+                        //store the number of tenant before add tenant
+                        if (int.Parse(item.FindElement(By.Id("all-tenants")).Text) - numberOfTenants == 1)
+                        {
+                            Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass,
+                                "Add Tenant testing Passed, Check if Tenant added successfull");
+                            goto done;
+                        }
+                        else
+                        {
+                            Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail,
+                                "Add Tenant testing Failed, Check if Tenant added Unsuccessfull");
+                            goto done;
+                        }
+                    }
+                }
+
+                done:
+                return;
+            }
+            catch (Exception e)
+            {
+                Base.test.Log(RelevantCodes.ExtentReports.LogStatus.Fail,
+                    e.Message);
+            }
         }
 
         #endregion

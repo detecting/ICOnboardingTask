@@ -81,6 +81,7 @@ namespace Keys_Onboarding.Test
                 listRentalPage.VerfyListRentalPage();
                 //Save and Confirm list Rental
                 RentalPropertiesPage rentalPropertiesPage = listRentalPage.ClickSaveAndAcceptListRental();
+                //check the result 
                 rentalPropertiesPage.CheckRentalWhichAdded();
             }
 
@@ -88,14 +89,25 @@ namespace Keys_Onboarding.Test
             public void AddTenant()
             {
                 // Creates a toggle for the given test, adds all log events under it    
-                test = extent.StartTest("Add Tenant  and Verity it" + GetDateAndTime.GetTimeNow());
+                test = extent.StartTest("Add Tenant and Verity it" + GetDateAndTime.GetTimeNow());
                 //Now page is Dashboard, then go to PropertyOwnersPage
                 PropertyOwnerPage propertyOwnerPage = new DashboardPage().GotoPropertyOwnersPage();
+                    //Click add tenant by input proerty name
                 AddTenantDashboardPage addTenantDashboardPage =
                     propertyOwnerPage.ClickAddTenantAccordingToPropertyName();
+                //fill AddTenantDashboard detail
                 addTenantDashboardPage.FillTheDetails();
+                //verity this page 
                 addTenantDashboardPage.VerifyTenantDetailsPage();
+                //click next button and move to liabilitiesDetailsPage
                 LiabilitiesDetailsPage liabilitiesDetailsPage = addTenantDashboardPage.ClickNext();
+                //click next button and move to summaryPage
+                SummaryPage summaryPage = liabilitiesDetailsPage.ClickNextBtn();
+                //click submit button and move to PropertyOwnerPage
+                PropertyOwnerPage propertyOwnerPageAfterAddTenant = summaryPage.ClickSubmit();
+                //verify if the tenant is added.
+                propertyOwnerPageAfterAddTenant.VerifyAddTenant();
+
             }
         }
     }

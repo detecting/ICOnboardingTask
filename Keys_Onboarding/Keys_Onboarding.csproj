@@ -92,7 +92,6 @@
     </Reference>
     <Reference Include="WebDriver.Support, Version=3.13.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.Support.3.13.1\lib\net45\WebDriver.Support.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -116,12 +115,13 @@
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\PropertyOwnePager.cs" />
     <Compile Include="Pages\RentalPropertiesPage.cs" />
+    <Compile Include="Pages\SummaryPage.cs" />
     <Compile Include="Pages\TenantDetailsPage.cs" />
     <Compile Include="Specflow\Steps\PO_Steps.cs" />
-    <Compile Include="Specflow\Features\SpecFlowFeature.feature.cs">
+    <Compile Include="Specflow\Features\PO_Steps.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpecFlowFeature.feature</DependentUpon>
+      <DependentUpon>PO_Steps.feature</DependentUpon>
     </Compile>
     <Compile Include="Test\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,9 +129,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Specflow\Features\SpecFlowFeature.feature">
+    <None Include="Specflow\Features\PO_Steps.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>SpecFlowFeature.feature.cs</LastGenOutput>
+      <LastGenOutput>PO_Steps.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
