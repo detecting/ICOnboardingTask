@@ -14,7 +14,7 @@ namespace Keys_Onboarding
             Base.test = Base.extent.StartTest("List A Rental and Verity it" + GetDateAndTime.GetTimeNow());
         }
 
-        [Given(@"Go to the property Owner Page")]
+        [Given(@"I navigate to the property Owner Page")]
         public void GivenGoToThePropertyOwnerPage()
         {
             //Now page is Dashboard, then go to PropertyOwnersPage

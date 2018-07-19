@@ -64,16 +64,16 @@ namespace Keys_Onboarding.Specflow.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("List A Rental")]
+        [NUnit.Framework.DescriptionAttribute("Check if the Owner can List A Rental")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void ListARental()
+        public virtual void CheckIfTheOwnerCanListARental()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("List A Rental", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check if the Owner can List A Rental", new string[] {
                         "mytag"});
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
- testRunner.Given("Go to the property Owner Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I navigate to the property Owner Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
  testRunner.And("I click List Rental", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 8

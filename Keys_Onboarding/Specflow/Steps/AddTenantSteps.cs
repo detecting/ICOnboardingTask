@@ -8,7 +8,7 @@ namespace Keys_Onboarding.Specflow.Steps
     [Binding]
     public class AddTenantSteps
     {
-        [Given(@"Go to property Owner Page")]
+        [Given(@"I navigate to property Owner Page")]
         public void GivenGoToPropertyOwnerPage()
         {
             // Creates a toggle for the given test, adds all log events under it    

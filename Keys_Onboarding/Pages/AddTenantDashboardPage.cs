@@ -15,6 +15,7 @@ namespace Keys_Onboarding.Pages
     {
         public AddTenantDashboardPage()
         {
+            //
             PageFactory.InitElements(Driver.driver, this);
         }
 

@@ -64,16 +64,16 @@ namespace Keys_Onboarding.Specflow.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Tenant")]
+        [NUnit.Framework.DescriptionAttribute("Check if the Owner can Add Tenant successfully")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void AddTenant()
+        public virtual void CheckIfTheOwnerCanAddTenantSuccessfully()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Tenant", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check if the Owner can Add Tenant successfully", new string[] {
                         "mytag"});
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
- testRunner.Given("Go to property Owner Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I navigate to property Owner Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
  testRunner.And("I Click add tenant by input proerty name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 8

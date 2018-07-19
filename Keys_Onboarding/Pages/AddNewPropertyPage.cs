@@ -253,19 +253,31 @@ namespace Keys_Onboarding.Pages
         {
             // Populating the data from Excel
             CommonMethods.ExcelLib.PopulateInCollection(Base.ExcelPath, "PropertyDetails");
-            //fill the form
+            //fill the propertyName
             PropertyName(CommonMethods.ExcelLib.ReadData(2, "PropertyName"));
+            //fill the PropertyType
             PropertyType(CommonMethods.ExcelLib.ReadData(2, "PropertyType"));
+            //fill SearchAddress
             SearchAddress(CommonMethods.ExcelLib.ReadData(2, "SearchAddress"));
+            //fill Description
             Description(CommonMethods.ExcelLib.ReadData(2, "Description"));
+            //fill TargetRent
             TargetRent(CommonMethods.ExcelLib.ReadData(2, "TargetRent"));
+            //fill RentType
             RentType(CommonMethods.ExcelLib.ReadData(2, "RentType"));
+            //fill LandArea
             LandArea(CommonMethods.ExcelLib.ReadData(2, "LandArea"));
+            //fill FloorArea
             FloorArea(CommonMethods.ExcelLib.ReadData(2, "FloorArea"));
+            //fill Bedrooms
             Bedrooms(CommonMethods.ExcelLib.ReadData(2, "Bedrooms"));
+            //fill Bathrooms
             Bathrooms(CommonMethods.ExcelLib.ReadData(2, "Bathrooms"));
+            //fill Carparks
             Carparks(CommonMethods.ExcelLib.ReadData(2, "Carparks"));
+            // fill YearBuilt
             YearBuilt(CommonMethods.ExcelLib.ReadData(2, "YearBuilt"));
+            //fill FileUpload
             FileUpload(CommonMethods.ExcelLib.ReadData(2, "FilePath"));
         }
 

@@ -64,16 +64,16 @@ namespace Keys_Onboarding.Specflow.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Create New Property")]
+        [NUnit.Framework.DescriptionAttribute("Check if the owner can Create New Property")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void CreateNewProperty()
+        public virtual void CheckIfTheOwnerCanCreateNewProperty()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create New Property", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check if the owner can Create New Property", new string[] {
                         "mytag"});
 #line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
- testRunner.Given("Go to propertyOwner Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I navigate to propertyOwner Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
  testRunner.And("Click Add New Property button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 8

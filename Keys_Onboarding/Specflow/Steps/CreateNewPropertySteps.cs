@@ -15,7 +15,7 @@ namespace Keys_Onboarding.Specflow.Steps
                 Base.extent.StartTest("Create new property and Verity it" + GetDateAndTime.GetTimeNow());
         }
 
-        [Given(@"Go to propertyOwner Page")]
+        [Given(@"I navigate to propertyOwner Page")]
         public void GivenGoToPropertyOwnerPageAnd()
         {
             //Now page is Dashboard, then go to PropertyOwnersPage
